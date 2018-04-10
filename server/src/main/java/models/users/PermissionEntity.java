@@ -5,8 +5,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.payAm.core.model.BaseEntity;
 import constants.users.PermissionConstants;
 import dtos.users.PermissionView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @Entity
 @Table(name="permission")
+@EntityListeners({AuditingEntityListener.class})
 public class PermissionEntity extends BaseEntity implements PermissionConstants, Permission {
 	private static final long serialVersionUID = 1L;
 

@@ -5,6 +5,7 @@ import com.payAm.core.model.BaseEntity;
 import constants.assessments.OrganizationAssessmentConstants;
 import models.users.UserEntity;
 import dtos.assessments.OrganizationAssessmentView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name="organization_assessment")
+@EntityListeners({AuditingEntityListener.class})
 public class OrganizationAssessmentEntity extends BaseEntity implements OrganizationAssessmentConstants {
 	private static final long serialVersionUID = 1L;
 

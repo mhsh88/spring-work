@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @MappedSuperclass
-public abstract class BaseEntity <I extends Serializable, E extends BaseEntity> implements BaseConstants  {
+public abstract class BaseEntity <I extends Serializable> implements BaseConstants  {
 
     @JsonView(BaseView.class)
     @Id
@@ -19,9 +19,9 @@ public abstract class BaseEntity <I extends Serializable, E extends BaseEntity> 
     @JsonView(BaseView.class)
     public Boolean deleted = false;
 
-    public abstract E insert();
-    public abstract E update();
-    public abstract E byId(I id);
+//    public abstract E insert();
+//    public abstract E update();
+//    public abstract E byId(I id);
 
     public String getTitlePropertyValue(String lang) {
         // TODO: make this function abstract

@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.payAm.core.model.BaseEntity;
 import constants.assessments.QuestionAnswerConstants;
 import dtos.assessments.QuestionAnswerView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="question_answer")
+@EntityListeners({AuditingEntityListener.class})
 public class QuestionAnswerEntity extends BaseEntity implements QuestionAnswerConstants {
 	private static final long serialVersionUID = 1L;
 

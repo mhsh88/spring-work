@@ -1,48 +1,62 @@
 package controllers.assessments;
 
-import com.avaje.ebean.annotation.Transactional;
-import com.payAm.core.ebean.BaseDao;
-import com.payAm.core.ebean.RestController;
-import daos.assessments.SalDao;
-import dtos.assessments.SalView;
+import com.payAm.core.ebean.BaseController;
+import com.payAm.core.ebean.BaseService;
 import models.assessments.SalEntity;
-import play.mvc.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
+import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Developer: Payam Mostafaei
  * Creation Time: 2017/Dec/08 - 14:03
  */
-public class SalController extends 
-        RestController<SalEntity, Long, SalView> {
+@RestController
+@RequestMapping("/u")
+public class SalController {
+//    ### sal ###
+//    GET     /sals/:id                                     controllers.assessments.SalController.load(id: Long)
+//    GET     /sals                                         controllers.assessments.SalController.loadModels()
+//    PUT   TODO  /sals                                         controllers.assessments.SalController.insert()
+//    POST    /sals                                         controllers.assessments.SalController.update()
+//    DELETE  /sals/:id                                     controllers.assessments.SalController.delete(id: Long)
+    @Autowired
+    BaseService entityDAO;
 
-    @Inject
-    private SalDao dao;
 
-    @Override
-    public BaseDao<Long, SalEntity> getDao() {
-        return dao;
+    @GetMapping(value="/sals/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<SalEntity> getEmployeeById(@PathVariable(value="id") Long Id){
+        SalEntity emp = (SalEntity) entityDAO.byId(Id);
+        if(emp == null){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok().body(emp);
     }
 
-    @Override
-    @Transactional
-    //@Pattern(Permission.SAL_UPDATE)
-    public Result insert() {
-        return super.insert();
+    @GetMapping(value="/sals", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<SalEntity> get(){
+        return entityDAO.getAll();
     }
 
-    @Override
-    @Transactional
-    //@Pattern(Permission.SAL_UPDATE)
-    public Result update() {
-        return super.update();
+    @PostMapping("/sals")
+    public SalEntity createEmployee(@Valid @RequestBody SalEntity ase){
+        return (SalEntity) entityDAO.insert(ase);
     }
 
-    @Override
-    @Transactional
-    //@Pattern(Permission.SAL_DELETE)
-    public Result delete(Long id) {
-        return super.delete(id);
+    @DeleteMapping("/sals/{id}")
+    public ResponseEntity<SalEntity> deleteEmployee(@PathVariable(value = "id") Long empId){
+        SalEntity emp = (SalEntity) entityDAO.byId(empId);
+        if(emp == null ){
+            return ResponseEntity.notFound().build();
+        }
+
+        entityDAO.delete(emp);
+
+        return ResponseEntity.ok().build();
     }
 }

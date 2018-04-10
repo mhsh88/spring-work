@@ -18,7 +18,7 @@ import javax.inject.Inject;
  * Creation Time: 2017/Jan/08 - 07:22 PM
  */
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/u")
 public abstract class BaseController /*extends Controller */ {
 
 //    @Inject Environment environment;

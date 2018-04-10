@@ -5,6 +5,7 @@ import com.payAm.core.model.BaseEntity;
 import constants.users.TokenActionConstants;
 import dtos.users.TokenActionView;
 import enumerations.security.ActionTokenType;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="token_action")
+@EntityListeners({AuditingEntityListener.class})
 public class TokenActionEntity extends BaseEntity implements TokenActionConstants {
     private static final long serialVersionUID = 1L;
 

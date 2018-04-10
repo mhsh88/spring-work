@@ -5,15 +5,14 @@ import com.payAm.core.model.BaseEntity;
 import constants.assessments.MetricConstants;
 import dtos.assessments.MetricView;
 import dtos.assessments.QuestionHasSalView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "metric")
+@EntityListeners({AuditingEntityListener.class})
 public class MetricEntity extends BaseEntity implements MetricConstants {
 	private static final long serialVersionUID = 1L;
 

@@ -405,25 +405,25 @@ public class StringUtil {
 		}
 	}
 
-	public static List<String> filterStringListByString(List<String> list, String filterValue, StringOperator operator) {
-		List<String> result = new ArrayList<>();
-		for (String value : list) {
-			Method method = ReflectionUtil.getMethod(value.getClass(), operator.getTitle(), String.class);
-			if ((Boolean) ReflectionUtil.invokeMethod(method, value, filterValue))
-				result.add(value);
-		}
-		return result;
-	}
+//	public static List<String> filterStringListByString(List<String> list, String filterValue, StringOperator operator) {
+//		List<String> result = new ArrayList<>();
+//		for (String value : list) {
+//			Method method = ReflectionUtil.getMethod(value.getClass(), operator.getTitle(), String.class);
+//			if ((Boolean) ReflectionUtil.invokeMethod(method, value, filterValue))
+//				result.add(value);
+//		}
+//		return result;
+//	}
 
-	public static List<String> filterStringListByNotString(List<String> list, String filterValue, StringOperator operator) {
-		List<String> result = new ArrayList<>();
-		for (String value : list) {
-			Method method = ReflectionUtil.getMethod(value.getClass(), operator.getTitle(), String.class);
-			if (!(Boolean) ReflectionUtil.invokeMethod(method, value, filterValue))
-				result.add(value);
-		}
-		return result;
-	}
+//	public static List<String> filterStringListByNotString(List<String> list, String filterValue, StringOperator operator) {
+//		List<String> result = new ArrayList<>();
+//		for (String value : list) {
+//			Method method = ReflectionUtil.getMethod(value.getClass(), operator.getTitle(), String.class);
+//			if (!(Boolean) ReflectionUtil.invokeMethod(method, value, filterValue))
+//				result.add(value);
+//		}
+//		return result;
+//	}
 
 	public enum StringOperator {
 

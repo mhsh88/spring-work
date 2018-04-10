@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import constants.users.LinkedAccountConstants;
 import com.payAm.core.model.BaseEntity;
 import dtos.users.LinkedAccountView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="linked_account")
+@EntityListeners({AuditingEntityListener.class})
 public class LinkedAccountEntity extends BaseEntity implements LinkedAccountConstants {
     private static final long serialVersionUID = 1L;
 

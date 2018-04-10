@@ -5,12 +5,14 @@ import com.payAm.core.model.BaseEntity;
 import constants.assessments.StandardConstants;
 import dtos.assessments.QuestionHasSalView;
 import dtos.assessments.StandardView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "standard")
+@EntityListeners({AuditingEntityListener.class})
 public class StandardEntity extends BaseEntity implements StandardConstants {
 	private static final long serialVersionUID = 1L;
 

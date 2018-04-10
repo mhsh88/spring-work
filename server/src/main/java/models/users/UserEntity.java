@@ -8,6 +8,7 @@ import com.feth.play.module.pa.providers.password.UsernamePasswordAuthUser;
 import com.payAm.core.model.BaseEntity;
 import constants.users.UserConstants;
 import models.assessments.OrganizationAssessmentEntity;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import play.data.validation.Constraints;
 import dtos.users.UserView;
 
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Entity
 @Table(name="security_user")
+@EntityListeners({AuditingEntityListener.class})
 public class UserEntity extends BaseEntity implements UserConstants, Subject {
 	private static final long serialVersionUID = 1L;
 

@@ -4,14 +4,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.payAm.core.model.BaseEntity;
 import constants.assessments.QuestionHasSalConstants;
 import dtos.assessments.QuestionHasSalView;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="question_has_sal")
+@EntityListeners({AuditingEntityListener.class})
 public class QuestionHasSalEntity extends BaseEntity implements QuestionHasSalConstants {
 	private static final long serialVersionUID = 1L;
 
